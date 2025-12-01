@@ -1,0 +1,18 @@
+[project]
+name = "modular-reasoning-scaffold"
+version = "1.1.7"
+description = "A lightweight meta-reasoning scaffold enabling controlled recursive reasoning in small LLMs."
+authors = [{ name = "Ryan Sabouhi" }]
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.8"
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/rjsabouhi/Modular-Reasoning-Scaffold"
+Documentation = "https://rjsabouhi.github.io/Modular-Reasoning-Scaffold/"
+Repository = "https://github.com/rjsabouhi/Modular-Reasoning-Scaffold"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
