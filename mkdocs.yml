@@ -1,0 +1,8 @@
+site_name: Modular Reasoning Scaffold (MRS)
+site_url: https://rjsabouhi.github.io/Modular-Reasoning-Scaffold/
+repo_url: https://github.com/rjsabouhi/Modular-Reasoning-Scaffold
+theme:
+  name: material
+
+nav:
+  - Home: index.md
