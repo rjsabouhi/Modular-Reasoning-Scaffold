@@ -6,3 +6,9 @@ theme:
 
 nav:
   - Home: index.md
+  - Architecture: architecture.md
+  - Interface: interface.md
+  - Math Core: math-core.md
+  - Operators: operators.md
+  - Examples: examples.md
+  
