@@ -6,6 +6,7 @@ theme:
 
 nav:
   - Home: index.md
+  - Overview: overview.md
   - Architecture: architecture.md
   - Interface: interface.md
   - Math Core: math-core.md

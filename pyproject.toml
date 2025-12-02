@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mrs-scaffold"
-version = "1.1.8"
+version = "1.1.9"
 description = "Modular Reasoning Scaffold (MRS) – a lightweight meta-reasoning layer for small LLMs."
 authors = [
   { name="RJ Sabouhi", email="symbolicsuite@gmail.com" }
