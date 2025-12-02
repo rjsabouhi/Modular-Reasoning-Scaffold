@@ -1,0 +1,14 @@
+LICENSE
+NOTICE
+README.md
+pyproject.toml
+mrs/__init__.py
+mrs/core.py
+mrs/nodes.py
+mrs/operators.py
+mrs/state.py
+mrs.egg-info/PKG-INFO
+mrs.egg-info/SOURCES.txt
+mrs.egg-info/dependency_links.txt
+mrs.egg-info/top_level.txt
+tests/test_basic.py

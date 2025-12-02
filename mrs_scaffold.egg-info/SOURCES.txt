@@ -1,0 +1,14 @@
+LICENSE
+NOTICE
+README.md
+pyproject.toml
+mrs/__init__.py
+mrs/core.py
+mrs/nodes.py
+mrs/operators.py
+mrs/state.py
+mrs_scaffold.egg-info/PKG-INFO
+mrs_scaffold.egg-info/SOURCES.txt
+mrs_scaffold.egg-info/dependency_links.txt
+mrs_scaffold.egg-info/top_level.txt
+tests/test_basic.py

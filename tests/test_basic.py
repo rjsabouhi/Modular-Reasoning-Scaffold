@@ -12,5 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .core import MRS
-__all__ = ["MRS"]
+# tests/test_basic.py
+
+from mrs import MRS
+
+def test_state_roundtrip():
+    m = MRS()
+    m.update("x", 10)
+    assert m.get("x") == 10

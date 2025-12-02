@@ -1,3 +1,31 @@
+Metadata-Version: 2.4
+Name: mrs-scaffold
+Version: 1.1.8
+Summary: Modular Reasoning Scaffold (MRS) – a lightweight meta-reasoning layer for small LLMs.
+Author-email: RJ Sabouhi <symbolicsuite@gmail.com>
+Project-URL: Homepage, https://rjsabouhi.github.io/Modular-Reasoning-Scaffold/
+Project-URL: Repository, https://github.com/rjsabouhi/Modular-Reasoning-Scaffold
+Project-URL: Documentation, https://rjsabouhi.github.io/Modular-Reasoning-Scaffold/
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+License-File: NOTICE
+Dynamic: license-file
+
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2025 RJ Sabouhi
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 # MRS v1.0 — Modular Recursion Scaffold
 *A lightweight architectural layer for controlled recursive reasoning in small LLMs*
 
