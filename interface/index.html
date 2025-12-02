@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#spdx-license-identifier-apache-20" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -277,6 +282,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -397,6 +404,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -416,9 +425,66 @@
   
 
 
-  <h1>Interface</h1>
-
-
+<h1 id="spdx-license-identifier-apache-20">SPDX-License-Identifier: Apache-2.0</h1>
+<h1 id="copyright-2025-rj-sabouhi">Copyright 2025 RJ Sabouhi</h1>
+<h1 id="licensed-under-the-apache-license-version-20-the-license">Licensed under the Apache License, Version 2.0 (the "License");</h1>
+<h1 id="you-may-not-use-this-file-except-in-compliance-with-the-license">you may not use this file except in compliance with the License.</h1>
+<h1 id="you-may-obtain-a-copy-of-the-license-at">You may obtain a copy of the License at</h1>
+<h1 id="_1"></h1>
+<h1 id="httpwwwapacheorglicenseslicense-20">http://www.apache.org/licenses/LICENSE-2.0</h1>
+<h1 id="_2"></h1>
+<h1 id="unless-required-by-applicable-law-or-agreed-to-in-writing-software">Unless required by applicable law or agreed to in writing, software</h1>
+<h1 id="distributed-under-the-license-is-distributed-on-an-as-is-basis">distributed under the License is distributed on an "AS IS" BASIS,</h1>
+<h1 id="without-warranties-or-conditions-of-any-kind-either-express-or-implied">WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</h1>
+<h1 id="see-the-license-for-the-specific-language-governing-permissions-and">See the License for the specific language governing permissions and</h1>
+<h1 id="limitations-under-the-license">limitations under the License.</h1>
+<h1 id="interface">Interface</h1>
+<p>The MRS interface defines how a language model interacts with recursion nodes, slots, constraints, and the flow engine.<br />
+It is intentionally minimal, so even small models can use it without overhead.</p>
+<hr />
+<h1 id="core-interface-objects">Core Interface Objects</h1>
+<h2 id="1-nodecontext">1. <code>NodeContext</code></h2>
+<p>Holds all information a single reasoning step needs.</p>
+<p>Fields:
+- <code>content</code>: current text or instruction
+- <code>slots</code>: dictionary of state slot values
+- <code>step</code>: current step index
+- <code>constraints</code>: active constraint set
+- <code>metadata</code>: free-form metadata for advanced use</p>
+<hr />
+<h2 id="2-stateslot">2. <code>StateSlot</code></h2>
+<p>A small persistent memory cell.</p>
+<p>Properties:
+- <code>name</code>
+- <code>value</code>
+- <code>locked</code> (prevents accidental overwrite)
+- <code>history</code> (optional tracking of past values)</p>
+<hr />
+<h2 id="3-constraintset">3. <code>ConstraintSet</code></h2>
+<p>Defines structural and semantic rules.</p>
+<p>Examples:
+- output must be JSON<br />
+- output must contain “reasoning” and “answer” sections<br />
+- recursion depth ≤ N<br />
+- forbid speculation<br />
+- enforce monotonic reasoning  </p>
+<hr />
+<h2 id="4-flowcontroller">4. <code>FlowController</code></h2>
+<p>Determines step transitions.</p>
+<p>Responsibilities:
+- <code>next_step()</code>
+- <code>halt()</code>
+- <code>branch()</code>
+- <code>merge()</code></p>
+<hr />
+<h1 id="execution-loop">Execution Loop</h1>
+<p>The full reasoning cycle for one task:</p>
+<p>```python
+while not controller.halted:
+    node = create_node(context)
+    output = model(node)
+    context = update_context(node, output)
+    controller.next_step(context)</p>
 
 
 

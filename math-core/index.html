@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#spdx-license-identifier-apache-20" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -304,6 +309,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -397,6 +404,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -416,9 +425,144 @@
   
 
 
-  <h1>Math Core</h1>
-
-
+<h1 id="spdx-license-identifier-apache-20">SPDX-License-Identifier: Apache-2.0</h1>
+<h1 id="copyright-2025-rj-sabouhi">Copyright 2025 RJ Sabouhi</h1>
+<h1 id="licensed-under-the-apache-license-version-20-the-license">Licensed under the Apache License, Version 2.0 (the "License");</h1>
+<h1 id="you-may-not-use-this-file-except-in-compliance-with-the-license">you may not use this file except in compliance with the License.</h1>
+<h1 id="you-may-obtain-a-copy-of-the-license-at">You may obtain a copy of the License at</h1>
+<h1 id="_1"></h1>
+<h1 id="httpwwwapacheorglicenseslicense-20">http://www.apache.org/licenses/LICENSE-2.0</h1>
+<h1 id="_2"></h1>
+<h1 id="unless-required-by-applicable-law-or-agreed-to-in-writing-software">Unless required by applicable law or agreed to in writing, software</h1>
+<h1 id="distributed-under-the-license-is-distributed-on-an-as-is-basis">distributed under the License is distributed on an "AS IS" BASIS,</h1>
+<h1 id="without-warranties-or-conditions-of-any-kind-either-express-or-implied">WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</h1>
+<h1 id="see-the-license-for-the-specific-language-governing-permissions-and">See the License for the specific language governing permissions and</h1>
+<h1 id="limitations-under-the-license">limitations under the License.</h1>
+<h1 id="math-core">Math Core</h1>
+<p>The mathematical core of MRS defines the formal structure behind stable, multi-step recursive reasoning.<br />
+It turns a language model (LM) into a <strong>state machine with constraint-guided transitions</strong>.</p>
+<hr />
+<h1 id="1-recursion-node-formal-definition">1. Recursion Node (Formal Definition)</h1>
+<p>A recursion node ( R_t ) at step ( t ) is:</p>
+<p>[
+R_t = \left( C_t,\; S_t,\; K_t,\; M_t \right)
+]</p>
+<p>Where:
+- ( C_t ) — content (task text or transformed instruction)
+- ( S_t ) — state slots (persistent intermediate memory)
+- ( K_t ) — active constraint set
+- ( M_t ) — metadata (optional semantic/structural hints)</p>
+<p>A single reasoning step is:</p>
+<p>[
+O_t = f_{\text{LM}}(R_t)
+]</p>
+<hr />
+<h1 id="2-state-slot-dynamics">2. State Slot Dynamics</h1>
+<p>A slot ( s_i ) is updated by:</p>
+<p>[
+s_i^{(t+1)} =
+\begin{cases}
+s_i^{(t)}, &amp; \text{if locked} \
+g_i(O_t), &amp; \text{otherwise}
+\end{cases}
+]</p>
+<p>Slots allow the model to:
+- accumulate intermediate results<br />
+- divide tasks into components<br />
+- maintain counters<br />
+- preserve facts across steps  </p>
+<p>This is the “working memory” that small LMs normally lack.</p>
+<hr />
+<h1 id="3-constraint-system">3. Constraint System</h1>
+<p>Constraints act as <strong>mathematical guards</strong> on each step.</p>
+<p>Typical constraint types:</p>
+<h3 id="structural">Structural</h3>
+<p>[
+\text{output must be JSON}
+]</p>
+<h3 id="semantic">Semantic</h3>
+<p>[
+\text{must include an explicit reasoning trace}
+]</p>
+<h3 id="logical">Logical</h3>
+<p>[
+\text{monotonic reasoning: do not contradict past steps}
+]</p>
+<h3 id="depth">Depth</h3>
+<p>[
+t \le t_{\max}
+]</p>
+<p>Constraints are evaluated as:</p>
+<p>[
+K_t(O_t) = \text{True or False}
+]</p>
+<p>If a constraint fails:</p>
+<ul>
+<li>the step is rejected  </li>
+<li>the node is reissued with context + correction hint  </li>
+<li>the system stays stable  </li>
+</ul>
+<p>This is how MRS prevents drift.</p>
+<hr />
+<h1 id="4-drift-metric">4. Drift Metric</h1>
+<p>Define drift ( D_t ) as:</p>
+<p>[
+D_t = d(O_t,\; C_t)
+]</p>
+<p>Where ( d ) is a similarity or structural-distance function.</p>
+<p>If:</p>
+<p>[
+D_t &gt; \tau
+]</p>
+<p>→ MRS triggers a constraint correction step.</p>
+<p>This is the <strong>self-stabilizing property</strong> that prevents the model from “wandering.”</p>
+<hr />
+<h1 id="5-flow-controller-transition-function">5. Flow Controller (Transition Function)</h1>
+<p>The transition function:</p>
+<p>[
+R_{t+1} = T(R_t,\; O_t)
+]</p>
+<p>Where ( T ) performs:</p>
+<ol>
+<li>Slot updates  </li>
+<li>Constraint evaluation  </li>
+<li>Branching decisions  </li>
+<li>Halting detection  </li>
+</ol>
+<p>Branching example:</p>
+<p>[
+T = {R_{t+1}^{(1)},\; R_{t+1}^{(2)},\ldots}
+]</p>
+<p>Halting condition:</p>
+<p>[
+H(R_t) = \text{True when task is solved}
+]</p>
+<hr />
+<h1 id="6-full-reasoning-chain">6. Full Reasoning Chain</h1>
+<p>With everything together:</p>
+<p>[
+{R_0,\; R_1,\; \ldots,\; R_T}
+]</p>
+<p>Forms a <strong>transparent reasoning chain</strong> that can be inspected at any point.</p>
+<p>MRS guarantees:</p>
+<ul>
+<li>bounded drift  </li>
+<li>structural consistency  </li>
+<li>traceability  </li>
+<li>deterministic halting behavior (given constraints)  </li>
+</ul>
+<hr />
+<h1 id="summary">Summary</h1>
+<p>The Math Core is what turns MRS into more than a prompt trick.<br />
+It gives a small model:</p>
+<ul>
+<li>memory  </li>
+<li>structure  </li>
+<li>flow control  </li>
+<li>guardrails  </li>
+<li>the ability to reason across multiple steps  </li>
+</ul>
+<p>All while remaining simple, finite, and fast.</p>
 
 
 

@@ -2,26 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://rjsabouhi.github.io/Modular-Reasoning-Scaffold/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://rjsabouhi.github.io/Modular-Reasoning-Scaffold/architecture/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://rjsabouhi.github.io/Modular-Reasoning-Scaffold/examples/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://rjsabouhi.github.io/Modular-Reasoning-Scaffold/interface/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://rjsabouhi.github.io/Modular-Reasoning-Scaffold/math-core/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://rjsabouhi.github.io/Modular-Reasoning-Scaffold/operators/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://rjsabouhi.github.io/Modular-Reasoning-Scaffold/overview/</loc>
+         <lastmod>2025-12-02</lastmod>
     </url>
 </urlset>

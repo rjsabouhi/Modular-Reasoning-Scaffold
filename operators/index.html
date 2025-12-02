@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#spdx-license-identifier-apache-20" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -331,6 +336,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -397,6 +404,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -416,9 +425,166 @@
   
 
 
-  <h1>Operators</h1>
-
-
+<h1 id="spdx-license-identifier-apache-20">SPDX-License-Identifier: Apache-2.0</h1>
+<h1 id="copyright-2025-rj-sabouhi">Copyright 2025 RJ Sabouhi</h1>
+<h1 id="licensed-under-the-apache-license-version-20-the-license">Licensed under the Apache License, Version 2.0 (the "License");</h1>
+<h1 id="you-may-not-use-this-file-except-in-compliance-with-the-license">you may not use this file except in compliance with the License.</h1>
+<h1 id="you-may-obtain-a-copy-of-the-license-at">You may obtain a copy of the License at</h1>
+<h1 id="_1"></h1>
+<h1 id="httpwwwapacheorglicenseslicense-20">http://www.apache.org/licenses/LICENSE-2.0</h1>
+<h1 id="_2"></h1>
+<h1 id="unless-required-by-applicable-law-or-agreed-to-in-writing-software">Unless required by applicable law or agreed to in writing, software</h1>
+<h1 id="distributed-under-the-license-is-distributed-on-an-as-is-basis">distributed under the License is distributed on an "AS IS" BASIS,</h1>
+<h1 id="without-warranties-or-conditions-of-any-kind-either-express-or-implied">WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</h1>
+<h1 id="see-the-license-for-the-specific-language-governing-permissions-and">See the License for the specific language governing permissions and</h1>
+<h1 id="limitations-under-the-license">limitations under the License.</h1>
+<h1 id="operators">Operators</h1>
+<p>MRS defines a small, finite set of operators that control the flow of reasoning.<br />
+Each operator transforms the current recursion node ( R_t ) in a predictable, interpretable way.</p>
+<p>Think of them as <strong>the instruction set</strong> of the MRS reasoning engine.</p>
+<hr />
+<h1 id="1-infer">1. <code>INFER</code></h1>
+<p>Produces the next logical step in the reasoning chain.</p>
+<p><strong>Purpose:</strong><br />
+Generate new content from the current context and state.</p>
+<p><strong>Formal form:</strong></p>
+<p>[
+O_t = \text{INFER}(R_t)
+]</p>
+<p><strong>Examples:</strong>
+- step-by-step deduction<br />
+- combining slot values<br />
+- deriving a new intermediate result  </p>
+<hr />
+<h1 id="2-updateslot-value">2. <code>UPDATE(slot, value)</code></h1>
+<p>Writes a new value into a state slot.</p>
+<p><strong>Purpose:</strong><br />
+Maintain persistent intermediate memory.</p>
+<p><strong>Formal form:</strong></p>
+<p>[
+s_{\text{slot}}^{(t+1)} = value
+]</p>
+<p><strong>Examples:</strong>
+- storing a partial computation<br />
+- keeping a counter<br />
+- saving extracted entities  </p>
+<hr />
+<h1 id="3-branchoptions">3. <code>BRANCH(options…)</code></h1>
+<p>Creates multiple child recursion paths.</p>
+<p><strong>Purpose:</strong><br />
+Explore alternative solutions, interpretations, or strategies.</p>
+<p><strong>Formal:</strong></p>
+<p>[
+{R_{t+1}^{(1)}, R_{t+1}^{(2)}, \ldots }
+]</p>
+<p><strong>Examples:</strong>
+- exploring multiple summaries<br />
+- trying alternate decompositions<br />
+- generating alternate proofs  </p>
+<hr />
+<h1 id="4-selectcondition">4. <code>SELECT(condition)</code></h1>
+<p>Chooses the best branch based on constraints or fit.</p>
+<p><strong>Purpose:</strong><br />
+Prune the tree and stabilize the chain.</p>
+<p>[
+R_{t+1} = \operatorname*{argmin}_{i}\; D(R_i)
+]</p>
+<p>Where ( D ) is a drift or error metric.</p>
+<hr />
+<h1 id="5-checkconstraint">5. <code>CHECK(constraint)</code></h1>
+<p>Evaluate whether the output matches a constraint.</p>
+<p><strong>Purpose:</strong><br />
+Keep the reasoning chain aligned with rules.</p>
+<p><strong>Formal:</strong></p>
+<p>[
+CHECK(K_t, O_t) \rightarrow {pass, fail}
+]</p>
+<p><strong>Examples:</strong>
+- structure must be JSON<br />
+- no contradictions allowed<br />
+- step must follow chain-of-thought structure  </p>
+<p>If fail:<br />
+→ trigger <strong>repair loop</strong>.</p>
+<hr />
+<h1 id="6-repair">6. <code>REPAIR</code></h1>
+<p>When a step violates constraints, <code>REPAIR</code> regenerates or corrects output.</p>
+<p><strong>Purpose:</strong><br />
+Self-stabilization.</p>
+<p><strong>Behavior:</strong>
+- regenerate the step<br />
+- re-check constraints<br />
+- preserve state slots  </p>
+<p>This prevents drift across long chains.</p>
+<hr />
+<h1 id="7-halt">7. <code>HALT</code></h1>
+<p>Stops the reasoning chain.</p>
+<p><strong>Purpose:</strong><br />
+Signal final output is complete.</p>
+<p><strong>Formal:</strong></p>
+<p>[
+H(R_t) = \text{True}
+]</p>
+<p><strong>Examples:</strong>
+- final answer reached<br />
+- all constraints satisfied<br />
+- no further steps needed  </p>
+<hr />
+<h1 id="8-emitoutput">8. <code>EMIT(output)</code></h1>
+<p>Return the final formatted output to the user.</p>
+<p><strong>Purpose:</strong><br />
+Provide the end result of the reasoning chain.</p>
+<hr />
+<h1 id="operator-summary-table">Operator Summary Table</h1>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>INFER</strong></td>
+<td>Generate next reasoning step</td>
+</tr>
+<tr>
+<td><strong>UPDATE</strong></td>
+<td>Write/update intermediate memory</td>
+</tr>
+<tr>
+<td><strong>BRANCH</strong></td>
+<td>Fork reasoning into parallel paths</td>
+</tr>
+<tr>
+<td><strong>SELECT</strong></td>
+<td>Choose best branch</td>
+</tr>
+<tr>
+<td><strong>CHECK</strong></td>
+<td>Validate constraints</td>
+</tr>
+<tr>
+<td><strong>REPAIR</strong></td>
+<td>Fix violations / drift</td>
+</tr>
+<tr>
+<td><strong>HALT</strong></td>
+<td>Stop computation</td>
+</tr>
+<tr>
+<td><strong>EMIT</strong></td>
+<td>Return final answer</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="notes">Notes</h1>
+<ul>
+<li>Operators are intentionally minimal.  </li>
+<li>They form a complete set for multi-step reasoning.  </li>
+<li>This is not a programming language — it is a <strong>flow control system for LMs</strong>.  </li>
+<li>The simplicity keeps it robust and generalizable.</li>
+</ul>
 
 
 
